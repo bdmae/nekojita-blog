@@ -1,0 +1,416 @@
+
+
+@mixin phone {
+  @media (max-width: 590px)
+    { @content; }
+}
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+$base: #FFFEF1;
+$light-blue: #DDFFF7;
+$mint: #93E1D8;
+$dark: #495D63;
+
+body {
+  background: $base;
+  font-family: "Poppins";
+  overflow-x: hidden;
+}
+
+#logo {
+  color: $dark;
+  text-decoration: none;
+  font-family: 'Twinkle Star', cursive;
+  font-size: 4rem;
+}
+
+
+.nav-header {
+  min-height: 10vh;
+  width: 100%;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: black;
+  width: 80%;
+  margin: auto;
+  padding: 2rem 0rem;
+  z-index: 2;
+  position: relative;
+}
+
+.line1,
+.line2 {
+  width: 3rem;
+  height: 0.2rem;
+  margin: 0.4rem;
+  background: $dark;
+  pointer-events: none;
+}
+
+
+.slide {
+  min-height: 100vh;
+  margin: 0 auto 0 auto;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: $dark;
+  padding: 4rem;
+  column-gap: 4rem !important;
+
+  @include phone {
+    flex-wrap: wrap;
+
+  }
+
+  &.dark {
+    z-index: 10;
+    .hero-desc {
+
+      &.dark {
+        padding: 0;
+
+         h2 {
+        color: white;
+        text-align: center;
+      }
+
+      p {
+        color: white;
+      }
+
+      .explore {
+        color: white;
+        border: 2px solid white;
+        align-self: center;
+      }
+
+      }
+    }
+  }
+
+    .hero-desc {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    flex-basis: 20rem;
+    margin-left: 5rem;
+    position: relative;
+
+    h2 {
+      font-family: 'Space Mono', monospace;
+      font-size: 2.4rem;
+      color: $dark;
+    }
+
+    p {
+      padding: 2rem 0rem;
+      font-size: 0.8rem;
+      color: $dark;
+    }
+  }
+
+  .hero-img {
+    position: relative;
+    flex: 1;
+    flex-basis: 20rem;
+    overflow: hidden;
+
+    &.blog-cover {
+      flex-basis: 25rem;
+
+      img {
+        width: 100%;
+        object-fit: cover;
+        border-radius: 0.4rem;
+      }
+    }
+  }
+}
+
+.intro-span {
+  color: rgb(86, 124, 228);
+}
+
+.blog1-span {
+  color: rgb(255, 139, 93);
+
+}
+
+.blog2-span {
+  color: rgb(167, 110, 231);
+}
+
+
+.explore {
+    padding: 0.8rem 0.8rem;
+    background: none;
+    /* border: none; */
+    color: black;
+    font-size: 0.9rem;
+    text-decoration: none;
+    -ms-flex-item-align: start;
+    align-self: flex-start;
+    cursor: pointer;
+    font-family: "Space Mono", monospace;
+    border: 1px black solid;
+    border-radius: 0.6rem;
+}
+.nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: $dark;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 1;
+  opacity: 1;
+  //comment out this when you want to style it better
+  clip-path: circle(50px at 100% -10%);
+  -webkit-clip-path: circle(50px at 100% -10%);
+
+  .nav-links {
+    flex-basis: 30rem;
+    color: white;
+    padding: 2rem;
+
+    p {
+      padding: 2rem 0rem;
+      font-size: 2.6rem;
+    }
+  }
+
+  .contact {
+    flex-basis: 30rem;
+    color: white;
+
+    h2 {
+      padding: 2rem 0rem;
+      font-size: 2rem;
+    }
+  }
+}
+
+.burger {
+  cursor: pointer;
+}
+
+.blog1 {
+  background: $dark;
+  z-index: 10;
+
+  .dark-reveal {
+    background: $dark;
+  }
+}
+
+.blog2 {
+  background-color: $base;
+
+
+  .hero-img {
+    display: flex;
+    justify-content: center;
+  }
+
+  img {
+    width: 70% !important;
+  }
+}
+
+.reveal-img,
+.reveal-text {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  left: 0;
+  top: 0;
+  z-index: -1px;
+
+  &.mint-green {
+      background-color: #93E1D8 !important;
+    }
+}
+
+.cursor {
+  width: 3rem;
+  height: 3rem;
+  border: 2px solid $mint;
+  border-radius: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  transition: all 0.6s ease-in-out;
+  //transitiion-property -> with this you can say
+  //exactly which transition properties you want to affect
+  // so in this case the background, and transform
+  transition-property: background, transform;
+  transform-origin: 75% 75%;
+
+  &.nav-active {
+    background: $mint;
+    transform: scale(2);
+    border: 2px solid $dark;
+
+  }
+
+  &.explore-active {
+    background: $mint;
+    border: 2px solid $dark;
+    transform: scale(2);
+  }
+}
+
+.cursor-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 0.5rem;
+  transform: translate(-50%, -50%);
+}
+
+.title {
+  position: relative;
+  overflow: hidden;
+}
+
+.title-swipe {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  mix-blend-mode: darken;
+  transform: translateY(100%);
+  transition: 0.2s ease;
+}
+
+// .t-swipe1 {
+//   background: rgb(86, 124, 228);
+//   mix-blend-mode: lighten;
+// }
+
+.t-swipe2 {
+  background: rgb(255, 139, 93);
+}
+
+// .t-swipe3 {
+//   background: rgb(167, 110, 231);
+// }
+
+body.hide {
+  overflow: hidden;
+}
+
+
+//other pages
+
+.intro {
+  min-height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  color: $base;
+
+  .reveal-text {
+    background-color: inherit;
+
+    &.mint-green {
+      background-color: #93E1D8;
+    }
+  }
+
+  .reveal-img {
+    background-color: inherit;
+  }
+
+
+  .intro-text {
+    flex: 1;
+    flex-basis: 25rem;
+    position: relative;
+  }
+
+  // h2 {
+  //   background: $dark;
+
+  // }
+}
+.intro-img {
+   flex-basis: 20rem;
+   height: 80vh;
+
+   img {
+    height: 100%;
+    width: 100%;
+    flex-basis: 20rem;
+    object-fit: cover;
+  }
+
+}
+
+.fashion-nr {
+  font-size: 15rem;
+  position: absolute;
+  left: 50%;
+  bottom: 10%;
+  color: $base;
+  opacity: 0.6;
+}
+
+.blog-list {
+  display: grid;
+  grid-template-columns: 250px 250px 250px;
+  grid-gap: 5%;
+  background-color: $mint;
+  padding: 4rem;
+  z-index: 20;
+
+  .blog {
+    border-radius: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+    &.first {
+      background-image: url("daytime sakura2.jpg");
+    }
+
+
+    .snippet {
+      padding: 4rem;
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
+      background-color: rgba(250, 250, 250, 0.5);
+    }
+  }
+
+
+  // img {
+  //   max-width: 100%;
+  //   object-fit: cover;
+  //   border-radius: 8px 8px 0 0;
+  // }
+
+
+}
+
+
