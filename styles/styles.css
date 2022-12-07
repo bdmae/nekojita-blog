@@ -130,9 +130,22 @@ body {
 }
 
 .slide .blog-cover {
-  flex-basis: 15rem;
-  height: 100vh;
+  flex-basis: 25rem;
 }
+
+.slide .blog-desc {
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  display: flex;
+    flex-direction: column;
+    flex: 1;
+    -ms-flex-preferred-size: 20rem;
+    flex-basis: 25rem;
+    padding: 3rem;
+    position: relative;
+}
+
 
 .slide .hero-img img {
   width: 100%;
