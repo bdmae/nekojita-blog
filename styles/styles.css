@@ -125,11 +125,7 @@ body {
 
 .slide .hero-img {
   position: relative;
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  -ms-flex-preferred-size: 25rem;
-      flex-basis: 10rem;
+  height: 100vh;
   overflow: hidden;
 }
 
